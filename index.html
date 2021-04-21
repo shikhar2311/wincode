@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="css/achiv.css">
+    <link rel="stylesheet" href="css/timeline.css">
     <title>WinCode</title>
 </head>
 <body>
@@ -133,6 +134,106 @@
       </div>
     </section9>
   </main>
+
+
+  <!-- time line -->
+
+  <div class="timeline-container" id="timeline-1">
+    <div class="timeline-header">
+      <h2 class="timeline-header__title">ABOUT US</h2>
+      <!-- <h3 class="timeline-header__subtitle">NEW AND CREATIVE</h3> -->
+    </div>
+    <div class="timeline">
+      <div class="timeline-item" data-text="Co-founder">
+        <div class="timeline__content"><img class="timeline__img" src="img/hunter2.jpg" />
+          <h2 class="timeline__content-title">Tushar Mishra</h2>
+          <p class="timeline__content-desc">Co-Founder of team wincode,bagged the third position in codefeed.Contributed the most in building this website as our team project.He also excels in C++ and web security technologies, robotics and TikerCAD. Member at IOSD DTU,skillzEra, Innova WebDev and CodeChef, corporate associate at IOSD and our beloved WinCode.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-text="Co-foundert">
+        <div class="timeline__content"><img class="timeline__img" src="img/shi2.jpg"/>
+          <h2 class="timeline__content-title">Shikhar Rajput</h2>
+          <p class="timeline__content-desc">This guy literally mastered basic web developement from scratch in just two to three days and also helped building this website. Also trying numerous fields like app developement, video editing and basic motion graphics. Member at skillzEra, Yuvaan PR Team and our beloved WinCode.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-text="Co-founderl">
+        <div class="timeline__content"><img class="timeline__img" src="img/sid2.jpg"/>
+          <h2 class="timeline__content-title">Siddartha Aggarwal</h2>
+          <p class="timeline__content-desc">He keeps all of our projects on track and manages his time quite well balancing the work in web developement and other projects. Basically he is our bullet train in every project and shows the maximum efficiency out from all of us.Member at IOSD DTU, Innova WebDev, Yuvaan, skillzEra and our beloved WinCode.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-text="Co-foundern">
+        <div class="timeline__content"><img class="timeline__img" src="img/titu2.jpg"/>
+          <h2 class="timeline__content-title">Yash Chauhan</h2>
+          <p class="timeline__content-desc">Also participated in codefeed partnering with Tushar and bagged the third rank. Also learning C++, python,JScript he is excelling in plethora of fields with his team members. Also knowing the basics of video editing using Filmora and Photoshop. Member at IOSD DTU, corporate associate at Engifest and IOSD, Innova WebDev, DCoder, skillzEra, Yuvaan PR team and our beloved WinCode.</p>
+        </div>
+      
+    
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+   <script>
+      
+      (function($) {
+    $.fn.timeline = function() {
+      var selectors = {
+        id: $(this),
+        item: $(this).find(".timeline-item"),
+        activeClass: "timeline-item--active",
+        img: ".timeline__img"
+      };
+      selectors.item.eq(0).addClass(selectors.activeClass);
+      selectors.id.css(
+        "background-image",
+        "url(" +
+          selectors.item
+            .first()
+            .find(selectors.img)
+            .attr("src") +
+          ")"
+      );
+      var itemLength = selectors.item.length;
+      $(window).scroll(function() {
+        var max, min;
+        var pos = $(this).scrollTop();
+        selectors.item.each(function(i) {
+          min = $(this).offset().top;
+          max = $(this).height() + $(this).offset().top;
+          var that = $(this);
+          if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
+            selectors.item.removeClass(selectors.activeClass);
+            selectors.id.css(
+              "background-image",
+              "url(" +
+                selectors.item
+                  .last()
+                  .find(selectors.img)
+                  .attr("src") +
+                ")"
+            );
+            selectors.item.last().addClass(selectors.activeClass);
+          } else if (pos <= max - 40 && pos >= min) {
+            selectors.id.css(
+              "background-image",
+              "url(" +
+                $(this)
+                  .find(selectors.img)
+                  .attr("src") +
+                ")"
+            );
+            selectors.item.removeClass(selectors.activeClass);
+            $(this).addClass(selectors.activeClass);
+          }
+        });
+      });
+    };
+  })(jQuery);
+  
+  $("#timeline-1").timeline();
+  
+      </script>
+
+
 
 
     <!-- profile cards start -->
