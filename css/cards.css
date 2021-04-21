@@ -14,18 +14,18 @@ body
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-color: black;
+    background-color: #161623;
     
     background-position-x: center;
     background-position-y: center;
-    /* background-size: 100% 100%; */
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: 100vh;
 
 }
 section
 {
-    background-image: url("https://cdn.discordapp.com/attachments/806228500582891540/834312831431737354/pexels-pixabay-373543.jpg");
+    /* background-image: url("https://cdn.discordapp.com/attachments/806228500582891540/834312831431737354/pexels-pixabay-373543.jpg"); */
     width: 100%;
     height: auto;
     z-index: 1;
