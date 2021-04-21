@@ -172,28 +172,71 @@
       
     
     </div>
-  </div>
-
-  <div class="timeline-container" id="timeline-1">
-    <div class="timeline-header">
-      <h2 class="timeline-header__title"></h2>
-      <!-- <h3 class="timeline-header__subtitle">NEW AND CREATIVE</h3> -->
-    </div>
-  
-
-      
-      <div class="timeline-item" data-text="Co-founder">
-        <div class="timeline__content"><img  class="timeline__img" src=""/>
-          
-          <h2 style="width: 100%;text-align: center;" class="timeline__content-title">Reach Us</h2>
-          <p class="timeline__content-desc"></p>
-        </div>
-      
-    
+   
     </div>
   </div>
  
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+     
+     (function($) {
+   $.fn.timeline = function() {
+     var selectors = {
+       id: $(this),
+       item: $(this).find(".timeline-item"),
+       activeClass: "timeline-item--active",
+       img: ".timeline__img"
+     };
+     selectors.item.eq(0).addClass(selectors.activeClass);
+     selectors.id.css(
+       "background-image",
+       "url(" +
+         selectors.item
+           .first()
+           .find(selectors.img)
+           .attr("src") +
+         ")"
+     );
+     var itemLength = selectors.item.length;
+     $(window).scroll(function() {
+       var max, min;
+       var pos = $(this).scrollTop();
+       selectors.item.each(function(i) {
+         min = $(this).offset().top;
+         max = $(this).height() + $(this).offset().top;
+         var that = $(this);
+         if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
+           selectors.item.removeClass(selectors.activeClass);
+           selectors.id.css(
+             "background-image",
+             "url(" +
+               selectors.item
+                 .last()
+                 .find(selectors.img)
+                 .attr("src") +
+               ")"
+           );
+           selectors.item.last().addClass(selectors.activeClass);
+         } else if (pos <= max - 40 && pos >= min) {
+           selectors.id.css(
+             "background-image",
+             "url(" +
+               $(this)
+                 .find(selectors.img)
+                 .attr("src") +
+               ")"
+           );
+           selectors.item.removeClass(selectors.activeClass);
+           $(this).addClass(selectors.activeClass);
+         }
+       });
+     });
+   };
+ })(jQuery);
+ 
+ $("#timeline-1").timeline();
+ 
+     </script>
 
 
 
@@ -308,7 +351,7 @@
     </section>
     <script src="https://kit.fontawesome.com/f7c9c10012.js" crossorigin="anonymous"></script>   
 
-    <section1 style="z-index: 500;" >
+    <section1>
         <div  class="wave wave1"></div>
         <div class="wave wave2"></div>
         <div class="wave wave3"></div>
@@ -356,66 +399,6 @@
   <script>
     AOS.init();
   </script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-   <script>
-      
-      (function($) {
-    $.fn.timeline = function() {
-      var selectors = {
-        id: $(this),
-        item: $(this).find(".timeline-item"),
-        activeClass: "timeline-item--active",
-        img: ".timeline__img"
-      };
-      selectors.item.eq(0).addClass(selectors.activeClass);
-      selectors.id.css(
-        "background-image",
-        "url(" +
-          selectors.item
-            .first()
-            .find(selectors.img)
-            .attr("src") +
-          ")"
-      );
-      var itemLength = selectors.item.length;
-      $(window).scroll(function() {
-        var max, min;
-        var pos = $(this).scrollTop();
-        selectors.item.each(function(i) {
-          min = $(this).offset().top;
-          max = $(this).height() + $(this).offset().top;
-          var that = $(this);
-          if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
-            selectors.item.removeClass(selectors.activeClass);
-            selectors.id.css(
-              "background-image",
-              "url(" +
-                selectors.item
-                  .last()
-                  .find(selectors.img)
-                  .attr("src") +
-                ")"
-            );
-            selectors.item.last().addClass(selectors.activeClass);
-          } else if (pos <= max - 40 && pos >= min) {
-            selectors.id.css(
-              "background-image",
-              "url(" +
-                $(this)
-                  .find(selectors.img)
-                  .attr("src") +
-                ")"
-            );
-            selectors.item.removeClass(selectors.activeClass);
-            $(this).addClass(selectors.activeClass);
-          }
-        });
-      });
-    };
-  })(jQuery);
   
-  $("#timeline-1").timeline();
-  
-      </script>
 </body>
 </html>
