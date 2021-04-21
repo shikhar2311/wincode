@@ -25,7 +25,7 @@ body
 }
 section
 {
-    background-image: url("/img/pexels-photo-844297.jpeg");
+    background-image: url("/img/pexels-pixabay-373543.jpg");
     width: 100%;
     height: auto;
     z-index: 1;
@@ -125,7 +125,7 @@ section::after
 
 .container .card .content .contentBx h3
 {
-    color: rgb(3, 3, 3);
+    color: rgb(5, 200, 226);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
@@ -169,7 +169,7 @@ section::after
 
 .container .card .sci li a
 {
-    color: #072a6e;
+    color: #9ceff1;
     font-size: 24px;
 }
 
